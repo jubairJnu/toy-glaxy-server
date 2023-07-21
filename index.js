@@ -30,6 +30,8 @@ async function run() {
 
 const toysCollection = client.db("toysDB").collection("toys");
 const blogsCollection = client.db("toysDB").collection("blogs");
+const customerCollection = client.db("toysDB").collection("customer");
+
 
 
 app.get('/add', async(req,res)=>{
@@ -96,6 +98,12 @@ app.delete('/mytoys/:id', async(req, res)=>{
       const cursor = blogsCollection.find();
       const result = await cursor.toArray();
       res.send(result);
+   })
+
+   app.get('/customer', async(req,res)=>{
+    const cursor = customerCollection.find();
+    const result = await cursor.toArray();
+    res.send(result);
    })
     
     // Send a ping to confirm a successful connection
